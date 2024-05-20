@@ -1,0 +1,17 @@
+node_modules/
+npm-debug.log
+npm-debug.log.*
+thumbs.db
+!.gitkeep
+package-lock.json
+*log
+
+build/*
+!build/icons
+!build/win_dependencies
+!build/installer.nsh
+!build/nsProcess.dll
+!build/nsProcessW.dll
+
+/dist
+node_sdk/

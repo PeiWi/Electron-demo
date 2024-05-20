@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "outDir": "./dist/js",
+        "allowJs": true,
+    },
+    "ts-node": {
+        "files": true
+      },
+    "include": [
+        "src/**/*",
+        "src/declare/*"
+, "win", "mac"    ],
+    "exclude": [
+        "node_modules",
+    ]
+}

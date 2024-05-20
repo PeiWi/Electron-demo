@@ -1,0 +1,106 @@
+{
+	"name": "electron-demo",
+	"version": "0.0.1",
+	"description": "electron-demo",
+	"main": "dist/js/main/main.js",
+	"scripts": {
+		"build": "tsc && electron-builder",
+		"buildCopy": "node ./buildFileCopier.js",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"postinstall": "electron-builder install-app-deps"
+	},
+	"author": "",
+	"license": null,
+	"devDependencies": {
+		"@electron/rebuild": "^3.6.0",
+		"@types/electron": "^1.6.10",
+		"@types/electron-debug": "^2.1.0",
+		"@types/express": "^4.17.20",
+		"@types/node": "^20.8.9",
+		"electron": "^27.0.2",
+		"electron-builder": "^24.12.0",
+		"typescript": "^5.2.2"
+	},
+	"build": {
+		"productName": "electron-demo",
+		"appId": "com.electron-demo",
+		"directories": {
+			"output": "build"
+		},
+		"files": [
+			"dist/**/*",
+			"node_sdk/*",
+			"ssl/*",
+			"src/utils/certificate/mac/*.*"
+		],
+		"mac": {
+			"appId": "com.electron-demo",
+			"icon": "build/icons/icon.icns",
+			"target": {
+				"target": "pkg",
+				"arch": [
+					"x64"
+				]
+			},
+			"extraResources": [
+				"node_sdk/*.*",
+				"ssl/*.*",
+				"certificate/*.*"
+			],
+			"identity": null,
+			"hardenedRuntime": true,
+			"gatekeeperAssess": false
+		},
+		"pkg": {
+			"installLocation": "/Applications"
+		},
+		"win": {
+			"target": [
+				{
+					"target": "nsis",
+					"arch": [
+						"x64"
+					]
+				}
+			],
+			"icon": "build/icons/icon.ico",
+			"extraResources": [
+				"node_sdk",
+				{
+					"from": "node_sdk",
+					"to": "node_sdk",
+					"filter": [
+						"**/*"
+					]
+				},
+				"ssl",
+				{
+					"from": "ssl",
+					"to": "ssl",
+					"filter": [
+						"*"
+					]
+				},
+				{
+					"from": "./static",
+					"to": "static",
+					"filter": [
+						"**/*"
+					]
+				}
+			]
+		},
+		"extends": null,
+		"extraMetadata": {
+			"main": "dist/js/main/main.js"
+		},
+		"nsis": {
+			"perMachine": "true"
+		}
+	},
+	"dependencies": {
+		"electron-debug": "^1.5.0",
+		"electron-devtools-installer": "^3.2.0",
+		"express": "^4.18.2"
+	}
+}
